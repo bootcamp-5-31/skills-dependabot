@@ -35,14 +35,18 @@ jobs:
       # We'll need to check out the repository so that we can edit the README
       - name: Checkout
         uses: actions/checkout@v2
-      
+
       # Verify the learner added the file contents
       - name: Check workflow contents, jobs
-        run: ./.github/script/check-file.sh
+        run: |
+          chmod a+x .github/script/check-file.sh
+          ./.github/script/check-file.sh
         env:
           FILE: "code/src/AttendeeSite/package-lock.json"
           SEARCH: "1.14.1"
       
+
+          
       # Update README to close <details id=1> and open <details id=2>
       # and set STEP to '2'
       - name: Update to step 2
