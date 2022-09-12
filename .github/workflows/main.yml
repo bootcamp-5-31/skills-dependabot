@@ -35,16 +35,13 @@ jobs:
       # We'll need to check out the repository so that we can edit the README
       - name: Checkout
         uses: actions/checkout@v2
-
-      # TBD-step-1-additional-steps
-      - name: Verify dependency
-        run: |
-          if grep -Fxq "1.14.1" "code/src/AttendeeSite/package-lock.json" 
-          then
-            echo 'the string is exist'
-          else
-            echo 'the string doesnt exist' 
-          fi
+      
+      # Verify the learner added the file contents
+      - name: Check workflow contents, jobs
+        run: ./.github/script/check-file.sh
+        env:
+          FILE: "code/src/AttendeeSite/package-lock.json"
+          SEARCH: "1.14.1"
       
       # Update README to close <details id=1> and open <details id=2>
       # and set STEP to '2'
