@@ -39,7 +39,7 @@ jobs:
       # TBD-step-1-additional-steps
       - name: Verify dependency
         run: |
-          if [ -z $(grep "1.14.1" "code/src/AttendeeSite/package-lock.json") ]; then
+          if grep -Fxq "1.14.1" "code/src/AttendeeSite/package-lock.json" then
             echo 'the string is exist'
           else
             echo 'the string doesnt exist' 
