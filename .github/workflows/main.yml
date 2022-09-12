@@ -35,13 +35,11 @@ jobs:
       # We'll need to check out the repository so that we can edit the README
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Let's get all the branches
 
       # TBD-step-1-additional-steps
       - name: Verify dependency
         run: |
-          if [ -z $(grep "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==" "code/src/AttendeeSite/package-lock.json") ]; then
+          if [ -z $(grep "1.14.1" "code/src/AttendeeSite/package-lock.json") ]; then
             echo 'the string is exist'
           else
             echo 'the string doesnt exist' 
